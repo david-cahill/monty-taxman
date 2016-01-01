@@ -1,7 +1,15 @@
 machine:
   node:
     version: 4.2.2
+  services:
+    - docker
 
 test:
   override:
     - echo "Taxman don't need no tests"
+
+deployment:
+  elasticbeanstalk:
+    branch: master
+    commands:
+      - echo "No deployment yet"
