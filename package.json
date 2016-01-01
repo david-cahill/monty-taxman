@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/rej156/es6-botkit.git"
+    "url": "git+ssh://git@github.com/ag-digital/monty-taxman.git"
   },
   "author": "Eric Juta",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rej156/es6-botkit/issues"
+    "url": "https://github.com/ag-digital/monty-taxman/issues"
   },
-  "homepage": "https://github.com/rej156/es6-botkit#readme",
+  "homepage": "https://github.com/ag-digital/monty-taxman#readme",
   "dependencies": {
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
