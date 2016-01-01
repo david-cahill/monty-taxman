@@ -1,5 +1,5 @@
 {
-  "name": "botkit es6 webpack",
+  "name": "montyslave",
   "version": "1.0.0",
   "description": "ES6 eslint Webpack Slack Botkit template",
   "main": "index.js",
