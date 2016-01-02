@@ -4,6 +4,10 @@ machine:
   services:
     - docker
 
+dependencies:
+  pre:
+    - pip install awsebcli
+
 test:
   override:
     - echo "Taxman don't need no tests"
@@ -12,4 +16,4 @@ deployment:
   elasticbeanstalk:
     branch: master
     commands:
-      - echo "No deployment yet"
+      - eb deploy
