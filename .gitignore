@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .tern-port
+.DS_Store
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

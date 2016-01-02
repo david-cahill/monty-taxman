@@ -6,7 +6,7 @@ machine:
 
 dependencies:
   pre:
-    - pip install awsebcli
+    - sudo pip install awsebcli
 
 test:
   override:
@@ -16,4 +16,4 @@ deployment:
   elasticbeanstalk:
     branch: master
     commands:
-      - eb deploy
+      - eb deploy --profile default
