@@ -1,12 +1,14 @@
-import Botkit from 'botkit'
-const controller = Botkit.slackbot()
+var Botkit = require('botkit')
+var controller = Botkit.slackbot()
 
-const bot = controller.spawn({
+var bot = controller.spawn({
   token: process.env.token
 })
 
-bot.startRTM((err, bot, payload) => {
+bot.startRTM(function(err, bot, payload) {
   if(err) {throw new Error(err)}
 })
 
-bot.hears('hey', 'direct_message, direct_mention, mention', (bot, message) => bot.reply(message, 'All your vitamin c are belong to us.'))
+bot.hears('hey', 'direct_message, direct_mention, mention', function(bot, message) {
+  bot.reply(message, 'All your vitamin c are belong to us.')
+})
