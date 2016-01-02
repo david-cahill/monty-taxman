@@ -32,15 +32,14 @@ bot.hears(['list my tickets', 'list available'],'direct_message,direct_mention,m
         return (story.requestedById == 1850810 || R.contains(1850810, story.ownerIds) && story.currentState != "accepted" || "delivered" || "finished")
       }, stories)
       convo.say("Here are your requested tickets:")
-      var results = ownedStories.map(function(story) {
-        return ("id: " + story.id + "\n" +
+      ownedStories.map(function(story) {
+        convo.say("id: " + story.id + "\n" +
                   "url: " + story.url + "\n" +
                   "type: " + story.type + "\n" +
                   "point estimate: " + story.estimate + "\n" +
                   "name: " + story.name + "\n" +
-                  "description: " + story.description + "\n")
+                  "description: " + story.description)
       })
-      convo.say("```" + results + "```")
     })
   })
 })
