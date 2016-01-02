@@ -1,0 +1,11 @@
+branch-defaults:
+  master:
+    environment: stateman-tax
+    group_suffix: null
+global:
+  application_name: monty-taxman
+  default_ec2_keyname: eric-juta
+  default_platform: Node.js
+  default_region: eu-west-1
+  profile: null
+  sc: git
