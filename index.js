@@ -1,11 +1,9 @@
 var Botkit = require('botkit')
-var controller = Botkit.slackbot()
+var bot = Botkit.slackbot()
 
-var bot = controller.spawn({
+bot.spawn({
   token: process.env.token
-})
-
-bot.startRTM(function(err, bot, payload) {
+}).startRTM(function(err, bot, payload) {
   if(err) {throw new Error(err)}
 })
 
