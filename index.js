@@ -7,10 +7,11 @@ bot.spawn({
   if(err) {throw new Error(err)}
 })
 
-bot.hears('hey',['direct_message, direct_mention, mention'], function(bot, message) {
-  bot.startConversation(message,function(err,convo) {
+bot.hears('hello','direct_message,direct_mention,mention', function(bot, message) {
+  // bot.startConversation(message,function(err,convo) {
 
-    convo.say('All your vitamin c are belong to us.');
-  })
-  // bot.reply(message, 'All your vitamin c are belong to us.')
+  //   convo.say('All your vitamin c are belong to us.');
+
+  // })
+  bot.reply(message, 'All your vitamin c are belong to us.')
 })
