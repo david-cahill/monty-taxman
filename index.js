@@ -70,8 +70,8 @@ bot.hears('assign me \#(.*)', 'direct_message,direct_mention,mention', function(
   pivotal.project(1479718).story(message.match[1]).update({currentState: 'started', ownedById: 1850810}, function(err, story) {
     if(err) { convo.say(err)}
   })
-  bot.reply(message, "Okay I've assigned @ej to ticket #" + message.match[1])
   bot.startPrivateConversation(message, function(err, convo) {
+    convo.say("Okay I've assigned @ej to ticket #" + message.match[1])
     convo.say("I'm going to start reminding you to take breaks now from " + message.match[1])
     var myTimer = [25*60*1000,5*60*1000];
     var timer;
@@ -81,10 +81,9 @@ bot.hears('assign me \#(.*)', 'direct_message,direct_mention,mention', function(
       loopindex ? timer = setInterval(function() { foo(false) }, myTimer[0]) : timer = setInterval(function() { foo(true) }, myTimer[1])
     }
     foo(false)
-    bot.hears("I'm done!", function(bot, message) {
-      clearInterval(timer)
-      bot.reply(message, '/giphy boss')
-    })
+  })
+  bot.hears("I'm done!", function(bot, message) {
+    clearInterval(timer)
+    bot.reply(message, '/giphy boss')
   })
 })
-
