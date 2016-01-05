@@ -67,10 +67,10 @@ bot.hears(['list my tickets', 'list available'],'direct_message,direct_mention,m
  */
 
 bot.hears('assign me \#(.*)', 'direct_message,direct_mention,mention', function(bot, message) {
-  pivotal.project(1479718).story(message.match[1]).update({currentState: 'started', ownedById: 1850810}, function(err, story) {
-    if(err) { convo.say(err)}
-  })
   bot.startPrivateConversation(message, function(err, convo) {
+    pivotal.project(1479718).story(message.match[1]).update({currentState: 'started', ownedById: 1850810}, function(err, story) {
+      if(err) { convo.say(err)}
+    })
     convo.say("Okay I've assigned @ej to ticket #" + message.match[1])
     convo.say("I'm going to start reminding you to take breaks now from " + message.match[1])
     var myTimer = [25*60*1000,5*60*1000];
@@ -81,9 +81,14 @@ bot.hears('assign me \#(.*)', 'direct_message,direct_mention,mention', function(
       loopindex ? timer = setInterval(function() { foo(false) }, myTimer[0]) : timer = setInterval(function() { foo(true) }, myTimer[1])
     }
     foo(false)
-  })
-  bot.hears("I'm done!", function(bot, message) {
-    clearInterval(timer)
-    bot.reply(message, '/giphy boss')
+    convo.ask("Are you done yet? yes or no", function(response, convo) {
+      if(response.text == 'Y') {
+        clearInterval(timer)
+        convo.say('/giphy boss')
+      }
+      else {
+        convo.next()
+      }
+    })
   })
 })
