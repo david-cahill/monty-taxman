@@ -79,16 +79,16 @@ bot.hears('assign me \#(.*)', 'direct_message,direct_mention,mention', function(
       clearInterval(timer)
       convo.say("Take a break");
       loopindex ? timer = setInterval(function() { foo(false) }, myTimer[0]) : timer = setInterval(function() { foo(true) }, myTimer[1])
+      convo.ask("Are you done yet? yes or no", function(response, convo) {
+        if(response.text == 'Y') {
+          clearInterval(timer)
+          convo.say('/giphy boss')
+        }
+        else {
+          convo.next()
+        }
+      })
     }
     foo(false)
-    convo.ask("Are you done yet? yes or no", function(response, convo) {
-      if(response.text == 'Y') {
-        clearInterval(timer)
-        convo.say('/giphy boss')
-      }
-      else {
-        convo.next()
-      }
-    })
   })
 })
