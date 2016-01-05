@@ -83,6 +83,7 @@ bot.hears('assign me \#(.*)', 'direct_message,direct_mention,mention', function(
         if(response.text == 'Y') {
           clearInterval(timer)
           convo.say('/giphy boss')
+          convo.stop()
         }
         else {
           convo.next()
