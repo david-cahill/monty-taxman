@@ -79,16 +79,40 @@ bot.hears('assign me \#(.*)', 'direct_message,direct_mention,mention', function(
       clearInterval(timer)
       convo.say("Take a break");
       loopindex ? timer = setInterval(function() { foo(false) }, myTimer[0]) : timer = setInterval(function() { foo(true) }, myTimer[1])
-      convo.ask("Are you done yet? yes or no", function(response, convo) {
-        if(response.text == 'Y') {
-          clearInterval(timer)
-          convo.say('/giphy boss')
-          convo.stop()
+      convo.ask('Are you finished, Say YES, NO or DONE to quit.',[
+        {
+          pattern: 'done',
+          callback: function(response,convo) {
+            clearInterval(timer)
+            convo.say('/giphy boss')
+            convo.stop()
+          }
+        },
+        {
+          pattern: bot.utterances.yes,
+          callback: function(response,convo) {
+            clearInterval(timer)
+            convo.say('/giphy boss')
+            convo.stop()
+          }
+        },
+        {
+          pattern: bot.utterances.no,
+          callback: function(response,convo) {
+            convo.say('Perhaps later.');
+            // do something else...
+            convo.next();
+          }
+        },
+        {
+          default: true,
+          callback: function(response,convo) {
+            // just repeat the question
+            convo.repeat();
+            convo.next();
+          }
         }
-        else {
-          convo.next()
-        }
-      })
+      ])
     }
     foo(false)
   })
