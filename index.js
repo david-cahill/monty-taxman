@@ -19,6 +19,10 @@ bot.hears(['hey', 'hello'],'direct_message,direct_mention,mention', function(bot
   bot.reply(message, 'All your vitamin c are belong to us.')
 })
 
+bot.hears('do you blame (.*)','direct_message,direct_mention,mention', function(bot, message) {
+  bot.reply(message, 'I definitely blame ' + message.match[1] + " for this. It's " + message.match[1] + " fault. ALWAYS. \n /giphy blame")
+})
+
 /*
  @taxman list all
  PMs you a link with the pivotal tracker project to view all the tickets in the web UI
